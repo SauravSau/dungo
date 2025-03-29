@@ -50,3 +50,6 @@ double dp100 = 100.0;
 double dp130 = 130.0;
 double dp150 = 150.0;
 double dp180 = 180.0;
+
+double blurOffSetTop = 5.5;
+double blurOffSetBottom = -5.5;

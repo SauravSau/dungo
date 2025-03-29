@@ -1,6 +1,11 @@
 
 import '../dungo.dart';
 
+//Fonts
+const bold = 'bold';
+const semibold = 'semibold';
+const medium = 'medium';
+const regular = 'regular';
 
 class AppTheme extends StatelessWidget {
   final Widget child;
@@ -70,6 +75,55 @@ class TextView extends StatelessWidget {
             decorationColor: decorationColor,
             backgroundColor: backgroundColor
         )
+    );
+  }
+}
+
+class Layout extends StatelessWidget {
+  final Widget child;
+  double? height;
+  double? width;
+  double blurRadius;
+  double yOffset;
+  Color? background;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
+  final AlignmentGeometry? alignment;
+  final BorderRadiusGeometry? borderRadius;
+  Layout({super.key,
+    required this.child,
+    this.borderRadius,
+    this.height,
+    this.width,
+    this.blurRadius=16.0,
+    this.yOffset=1,
+    this.background,
+    this.padding,
+    this.margin,
+    this.alignment
+  }) :  assert(margin == null || margin.isNonNegative),
+        assert(padding == null || padding.isNonNegative);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: height,
+        width: width,
+        alignment: alignment,
+        margin: margin,
+        padding: padding,
+        decoration: BoxDecoration(
+            color: background??bgcolor_secondary,
+            borderRadius: borderRadius,
+            boxShadow: [
+              BoxShadow(
+                  color: shadow_color,
+                  blurRadius: blurRadius,
+                  offset: Offset(1,yOffset)
+              )
+            ]
+        ),
+        child: child
     );
   }
 }

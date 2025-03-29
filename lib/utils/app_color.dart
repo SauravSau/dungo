@@ -2,6 +2,8 @@
 
 import '../dungo.dart';
 
+
+Color shadow_color = const Color(0x0D000000);
 Color brand_color = const Color(0xFF336EB6);
 Color bgcolor_primary = const Color(0xFFFFFFFF);
 Color bgcolor_secondary = const Color(0xFFFAFAFF);
