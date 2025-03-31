@@ -11,3 +11,12 @@ enum BottomMenus{
   final String name;
   final String icon;
 }
+
+enum Schiduling{
+  DAY('Day',52),
+  WEEK('Week',403),
+  MONTH('Month',1612);
+  const Schiduling(this.name, this.value);
+  final String name;
+  final num value;
+}
