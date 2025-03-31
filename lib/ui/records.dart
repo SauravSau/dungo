@@ -36,33 +36,11 @@ class _RecordsState extends State<Records> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: dp8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: Schiduling.values.map((element){
-            return Container(
-              height: dp85,
-              padding: EdgeInsets.symmetric(horizontal: dp36, vertical: dp10),
-              decoration: BoxDecoration(
-                color: bgcolor_secondary1,
-                borderRadius: BorderRadius.circular(20)
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(height: dp6),
-                  TextView(element.name, regular, sp14, textcolor_primary),
-                  TextView('\$${element.value}', semibold, sp18, textcolor_primary),
-                ]
-              )
-            );
-          }).toList(),
-        ),
         Expanded(
           child: ListView.separated(
             shrinkWrap: true,
             itemCount: _dataList.length,
-            padding: EdgeInsets.only(left: dp10, right: dp12, top: dp24),
+            padding: EdgeInsets.only(left: dp10, right: dp10, top: dp24),
             separatorBuilder: (context, index)=>SizedBox(height: dp36),
             itemBuilder: (context, index){
               RecordsStructure item = _dataList[index];
@@ -84,7 +62,7 @@ class _RecordsState extends State<Records> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        TextView(item.category, semibold, sp20, textcolor_primary),
+                        TextView(item.category, semibold, sp18, textcolor_primary),
                         TextView(item.accountType.toLowerCase(), regular, sp12, textcolor_primary),
                       ],
                     ),
@@ -93,7 +71,7 @@ class _RecordsState extends State<Records> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      TextView('\$${item.amount}', semibold, sp20, textcolor_primary),
+                      TextView('\$${item.amount}', semibold, sp18, textcolor_primary),
                       TextView('32%', regular, sp12, textcolor_primary),
                     ]
                   )

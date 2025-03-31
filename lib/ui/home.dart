@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:dungo/ui/records.dart';
 import '../dungo.dart';
+import 'analysis.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,7 +17,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
         body: AppTheme(
             child: Column(
                 children: [
@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Image(
-                              image: getImage(icon_budgets),
+                              image: getImage(icon_menu),
                               height: dp20,
                               width: dp20,
                               color: textcolor_primary
@@ -39,17 +39,40 @@ class _HomeState extends State<Home> {
                               ]
                           ),
                           Image(
-                              image: getImage(icon_budgets),
-                              height: dp20,
-                              width: dp20,
+                              image: getImage(icon_bell),
+                              height: dp22,
+                              width: dp22,
                               color: textcolor_primary
                           )
                         ]
                     )
                   ),
-                  _childScreen == BottomMenus.RECORDS?
-                  Expanded(child: Records())
-                      :
+                  Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: dp10, vertical: dp8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: Schiduling.values.map((element){
+                        return Container(
+                            height: dp85,
+                            padding: EdgeInsets.symmetric(horizontal: dp36, vertical: dp10),
+                            decoration: BoxDecoration(
+                                color: bgcolor_secondary1,
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(height: dp6),
+                                  TextView(element.name, regular, sp14, textcolor_primary),
+                                  TextView('\$${element.value}', semibold, sp18, textcolor_primary),
+                                ]
+                            )
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  _childScreen == BottomMenus.RECORDS? Expanded(child: Records()) :
+                  _childScreen == BottomMenus.ANALYSIS? Analysis() :
                   Container()
                 ]
             )
